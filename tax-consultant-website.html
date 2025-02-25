@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>최민재 세무사 | 서울세무파트너스</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* 기본 스타일 */
+    :root {
+      --primary: #0052cc;
+      --secondary: #003580;
+      --accent: #ff8c00;
+      --light: #f7f9fc;
+      --dark: #2c3e50;
+      --success: #28a745;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+    }
+    
+    body {
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-color: var(--light);
+    }
+    
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+    
+    ul {
+      list-style-position: inside;
+      margin-bottom: 1rem;
+    }
+    
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    a:hover {
+      color: var(--accent);
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      text-align: center;
+    }
+    
+    .btn:hover {
+      background-color: var(--secondary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    
+    .btn-accent {
+      background-color: var(--accent);
+    }
+    
+    .btn-accent:hover {
+      background-color: #e67e00;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 24px;
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    .section {
+      padding: 60px 0;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background-color: var(--accent);
+    }
+    
+    /* 헤더 스타일 */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    
+    .logo span {
+      color: var(--primary);
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+    }
+    
+    nav ul li {
+      margin-left: 30px;
+    }
+    
+    nav ul li a {
+      font-weight: 500;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+    
+    /* 히어로 섹션 */
+    .hero {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      color: white;
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    
+    .hero-text {
+      flex: 1;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+    
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    /* 서비스 섹션 */
+    .services {
+      background-color: white;
+    }
+    
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .service-card {
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      background-color: var(--light);
+      height: 100%;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    .service-title {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+    
+    /* 성과 섹션 */
+    .achievements {
+      background-color: var(--light);
+    }
+    
+    .achievement-card {
+      border-left: 4px solid var(--primary);
+      padding-left: 20px;
+    }
+    
+    .achievement-title {
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    .problem, .solution, .result {
+      margin-bottom: 0.5rem;
+    }
+    
+    .problem span, .solution span, .result span {
+      font-weight: 600;
+      color: var(--dark);
+    }
+    
+    .result {
+      color: var(--success);
+      font-weight: 600;
+    }
+    
+    /* 고객 인터뷰 섹션 */
+    .testimonials {
+      background-color: white;
+    }
+    
+    .testimonial-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      padding: 20px 0;
+    }
+    
+    .testimonial-card {
+      min-width: 300px;
+      scroll-snap-align: start;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      background-color: var(--light);
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--dark);
+    }
+    
+    /* 약력 섹션 */
+    .credentials {
+      background-color: var(--light);
+    }
+    
+    .credentials-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    
+    .credential-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .credential-title {
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .credential-title i {
+      margin-right: 10px;
+      color: var(--primary);
+    }
+    
+    .credential-item {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* 차별화 섹션 */
+    .advantages {
+      background-color: white;
+    }
+    
+    .advantage-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    
+    .advantage-icon {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      margin-right: 20px;
+    }
+    
+    .advantage-content h3 {
+      margin-bottom: 8px;
+    }
+    
+    /* 연락처 섹션 */
+    .contact {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 60px 0;
+    }
+    
+    .contact h2 {
+      color: white;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .contact-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 15px;
+    }
+    
+    .contact-form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    
+    /* 특별 기능 섹션 */
+    .features {
+      background-color: var(--light);
+    }
+    
+    .feature-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+      border-radius: 8px;
+      background-color: white;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    .feature-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    /* 푸터 */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 40px 0 20px;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-heading {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background-color: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* 실시간 채팅 위젯 */
+    .chat-widget {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+    
+    .chat-widget:hover {
+      transform: scale(1.1);
+    }
+    
+    .chat-popup {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 350px;
+      height: 450px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      z-index: 101;
+      overflow: hidden;
+      display: none;
+    }
+    
+    .chat-header {
+      background-color: var(--primary);
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .chat-close {
+      cursor: pointer;
+    }
+    
+    .chat-messages {
+      height: 330px;
+      padding: 15px;
+      overflow-y: auto;
+    }
+    
+    .chat-input {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #eee;
+    }
+    
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+    
+    .chat-input button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    /* 세금 계산기 */
+    .calculator {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    
+    .calculator-result {
+      background-color: var(--light);
+      padding: 15px;
+      border-radius: 4px;
+      margin-top: 20px;
+      display: none;
+    }
+    
+    .savings-amount {
+      font-size: 1.5rem;
+      color: var(--success);
+      font-weight: 700;
+    }
+    
+    /* 반응형 디자인 */
+    @media (max-width: 992px) {
+      .hero-content {
+        flex-direction: column;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 15px;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      nav {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: white;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        display: none;
+      }
+      
+      nav.active {
+        display: block;
+      }
+      
+      nav ul {
+        flex-direction: column;
+      }
+      
+      nav ul li {
+        margin: 0;
+        margin-bottom: 15px;
+      }
+      
+      .service-grid, .contact-grid, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .section {
+        padding: 40px 0;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero {
+        padding: 50px 0;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .chat-popup {
+        width: 300px;
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 헤더 -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">서울<span>세무파트너스</span></div>
+      <div class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+      <nav id="main-nav">
+        <ul>
+          <li><a href="#services">서비스</a></li>
+          <li><a href="#achievements">주요 성과</a></li>
+          <li><a href="#advantages">차별화 강점</a></li>
+          <li><a href="#contact">상담 문의</a></li>
+          <li><a href="#" class="btn">세무 상담 예약</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 히어로 섹션 -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-badge">15년 차 글로벌 세무 전문가</div>
+          <h1>복잡한 세무 문제, 전략적 해결로 새로운 가치를 창조합니다</h1>
+          <p>기업과 개인의 세무 리스크를 성장 기회로 전환시키는 솔루션을 제안합니다. 한국공인회계사(KICPA) 및 미국공인회계사(AICPA) 자격 보유, 연간 50+개 기업 컨설팅 실적.</p>
+          <a href="#contact" class="btn btn-accent">무료 상담 신청</a>
+        </div>
+        <div class="hero-image">
+          <img src="/api/placeholder/500/500" alt="최민재 세무사 프로필">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 서비스 섹션 -->
+  <section id="services" class="section services">
+    <div class="container">
+      <h2 class="section-title">세무 서비스 분야</h2>
+      <div class="service-grid">
+        <!-- 법인 세무 컨설팅 -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3 class="service-title">🔹 법인 세무 컨설팅</h3>
+          <ul>
+            <li>M&A 세무실사부터 투자구조 설계까지 <strong>사업 성장 단계별 맞춤 전략</strong></li>
+            <li>그룹사 거래가격(TP) 조정, 세무조사 대응 <strong>사전 리스크 관리 프로그램</strong></li>
+            <li>주요 대상: 중견기업, 글로벌 스타트업, 벤처투자기관</li>
+          </ul>
+        </div>
+        
+        <!-- 개인 자산 관리 -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-wallet"></i>
+          </div>
+          <h3 class="service-title">🔹 개인 자산 관리</h3>
+          <ul>
+            <li>다중국적 자산 포트폴리오 최적화 (<strong>부동산, 주식, 크립토 통합 관리</strong>)</li>
+            <li>3세대 장기 상속계획 수립 (<strong>신탁·법인 설계부터 증여 실행까지</strong>)</li>
+            <li>주요 대상: 글로벌 기업가, 100억 이상 자산 보유자</li>
+          </ul>
+        </div>
+        
+        <!-- 국제 세무 지원 -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-globe"></i>
+          </div>
+          <h3 class="service-title">🔹 국제 세무 지원</h3>
+          <ul>
+            <li>BEPS 2.0 대응을 위한 <strong>디지털 경제 세무전략</strong> 수립</li>
+            <li>미국 IRS·중국 현지 세무당국과의 <strong>실시간 협업 시스템</strong> 구축</li>
+            <li>주요 대상: 해외 진출 중소기업, 크로스보더 투자자</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 차별화된 강점 섹션 -->
+  <section id="advantages" class="section advantages">
+    <div class="container">
+      <h2 class="section-title">차별화된 강점</h2>
+      
+      <div class="advantage-item">
+        <div class="advantage-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="advantage-content">
+          <h3>AI 세무분석 시스템</h3>
+          <p>머신러닝 기반 세무데이터 플랫폼 "TAX-i" 개발 (2024 한국세무혁신대상 수상)</p>
+        </div>
+      </div>
+      
+      <div class="advantage-item">
+        <div class="advantage-icon">
+          <i class="fas fa-network-wired"></i>
+        </div>
+        <div class="advantage-content">
+          <h3>글로벌 네트워크</h3>
+          <p>뉴욕·런던·홍콩 현지 파트너사와 <strong>24시간 실시간 협업</strong> 체계 구축</p>
+        </div>
+      </div>
+      
+      <div class="advantage-item">
+        <div class="advantage-icon">
+          <i class="fas fa-hand-holding-usd"></i>
+        </div>
+        <div class="advantage-content">
+          <h3>투명한 비용 체계</h3>
+          <p>성공사례 기반 <strong>성과 공유제</strong> 운영 (세금 절감액의 일정 비율만 청구)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 주요 성과 섹션 -->
+  <section id="achievements" class="section achievements">
+    <div class="container">
+      <h2 class="section-title">주요 성과</h2>
+      
+      <div class="card achievement-card">
+        <h3 class="achievement-title">📈 글로벌 IT 기업 세무조정</h3>
+        <p class="problem"><span>문제:</span> 아시아 5개국 법인 간 이익 배분 분쟁</p>
+        <p class="solution"><span>해결:</span> OECD 가이드라인 기반 TP 문서화 + 현지 세무당국 협상</p>
+        <p class="result"><span>결과:</span> $1.8M 추가 세금 부담 회피</p>
+      </div>
+      
+      <div class="card achievement-card">
+        <h3 class="achievement-title">📈 부동산 개발업체 상속세 분쟁</h3>
+        <p class="problem"><span>문제:</span> 650억 상속세 고지 청구</p>
+        <p class="solution"><span>해결:</span> 문화재 지정 토지 특례 조항 적용 + 단계적 증여 계획</p>
+        <p class="result"><span>결과:</span> 최종 세금 43% 감액 성공</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 고객 인터뷰 섹션 -->
+  <section class="section testimonials">
+    <div class="container">
+      <h2 class="section-title">고객 인터뷰</h2>
+      
+      <div class="testimonial-container">
+        <div class="testimonial-card">
+          <p class="testimonial-text">"투자 유치 단계부터 상장까지 모든 과정을 함께한 든든한 파트너"</p>
+          <p class="testimonial-author">ㅇㅇ테크 최재욱 대표 (시리즈B 성공 유치 기업)</p>
+        </div>
+        
+        <div class="testimonial-card">
+          <p class="testimonial-text">"3대에 걸친 복잡한 상속 문제를 단숨에 해결해주셨어요"</p>
+          <p class="testimonial-author">ㅇㅇ그룹 김모 씨 (850억 부동산 상속 사례)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 학력·경력·자격 섹션 -->
+  <section class="section credentials">
+    <div class="container">
+      <h2 class="section-title">학력·경력·자격</h2>
+      
+      <div class="credentials-container">
+        <div class="credential-group">
+          <h3 class="credential-title"><i class="fas fa-graduation-cap"></i> 학력</h3>
+          <ul>
+            <li class="credential-item">서울대 회계학과(학사)</li>
+            <li class="credential-item">MIT 슬론경영대학원 세무전략(석사)</li>
+          </ul>
+        </div>
+        
+        <div class="credential-group">
+          <h3 class="credential-title"><i class="fas fa-briefcase"></i> 경력</h3>
+          <ul>
+            <li class="credential-item">現) 서울세무파트너스 대표</li>
+            <li class="credential-item">前) 빅4 회계법인 국제세무팀장</li>
+          </ul>
+        </div>
+        
+        <div class="credential-group">
+          <h3 class="credential-title"><i class="fas fa-certificate"></i> 자격</h3>
+          <ul>
+            <li class="credential-item">KICPA(12회)</li
